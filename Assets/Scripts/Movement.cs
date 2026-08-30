@@ -1,13 +1,12 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    private float speed = 0.5f;
+    private float moveSpeed = 5f;
     private Rigidbody2D rb;
-    private Vector2 input;
-
-
-
+    private Vector2 moveInput;
 
     void Start()
     {
@@ -15,16 +14,14 @@ public class Movement : MonoBehaviour
     }
     void Update()
     {
-        input.x = Input.GetAxisRaw("Horizontal");
-        input.y = Input.GetAxisRaw("Vertical");
-
-        input.Normalize();
+        rb.linearVelocity = moveInput * moveSpeed;
     }
 
-    private void FixedUpdate()
+    public void Move(InputAction.CallbackContext context)
     {
-        rb.linearVelocity = input * speed;
-
+        moveInput = context.ReadValue<Vector2>();
     }
-
+    
 }
+
+
