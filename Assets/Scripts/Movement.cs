@@ -7,9 +7,9 @@ public class Movement : MonoBehaviour
     private float speed = 8f;
     private bool isFacingRight = true;
 
+    private Vector2 lastMoveDirection = Vector2.down;
+
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
 
     void Update()
     {
@@ -22,6 +22,9 @@ public class Movement : MonoBehaviour
     {
         Vector2 moveInput = new Vector2(horizontal, vertical).normalized;
         rb.linearVelocity = moveInput * speed;
+
+        if (moveInput != Vector2.zero)
+            lastMoveDirection = moveInput;
     }
 
     private void Flip()
