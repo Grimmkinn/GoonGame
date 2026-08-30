@@ -27,8 +27,4 @@ public class Movement : MonoBehaviour
 
     }
 
-    private void Flip()
-    {
-
-    }
 }
