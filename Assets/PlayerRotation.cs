@@ -7,7 +7,6 @@ namespace Assets
 
         private void Update()
         {
-            LookAt(Vector3.zero);
         }
     }
 }
